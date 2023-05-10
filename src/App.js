@@ -1,6 +1,8 @@
 import "./App.css";
+import { createBrowserRouter,Navigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Header from "./component/Header";
+
+import Layout from "./component/Layout";
 
 const theme = createTheme({
   palette: {
@@ -16,9 +18,8 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
+      <Layout/>
     </ThemeProvider>
   );
 }
-
 export default App;

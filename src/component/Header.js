@@ -1,22 +1,24 @@
-import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Container,
-  Button,
-  Box,
-} from "@mui/material";
+import { useState } from "react";
+import { AppBar, Toolbar, Typography, Container } from "@mui/material";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import GroupsIcon from "@mui/icons-material/Groups";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 
-const pages = ["register employee","Employees"];
 export default function Header() {
+  const [value, setValue] = useState("employees");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <AppBar position="static" color="primary">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Diversity3Icon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1, width: 50 }}
+            sx={{ display: { xs: "flex", md: "flex" }, mr: 1, width: 50 }}
           />
           <Typography
             variant="h6"
@@ -35,21 +37,27 @@ export default function Header() {
           >
             Employee
           </Typography>
-          <Box
+          <BottomNavigation
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex", justifyContent: "end" },
+              display: { xs: "flex", md: "flex", justifyContent: "end" },
+              backgroundColor: "inherit",
+              width: 500,
             }}
+            value={value}
+            onChange={handleChange}
           >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                sx={{ my: 2, color: "silver", display: "block",mx: 2 }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+            <BottomNavigationAction
+              label={<span style={{ color: "silver" }}>Register</span>}
+              value="register"
+              icon={<PersonAddAlt1Icon style={{ color: "silver" }} />}
+            />
+            <BottomNavigationAction
+              label={<span style={{ color: "silver" }}>Employees</span>}
+              value="employees"
+              icon={<GroupsIcon style={{ color: "silver" }} />}
+            />
+          </BottomNavigation>
         </Toolbar>
       </Container>
     </AppBar>
