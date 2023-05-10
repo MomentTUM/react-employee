@@ -1,11 +1,21 @@
-const express = require('express')
-const router = express.Router()
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "../component/Layout";
+import HomePage from "../pages/HomePage";
+import RegisterPage from "../pages/RegisterPage";
+import EmployeeInfo from "../pages/EmployeeInfo";
 
-router.get('/',(req,res)=> {
-    res.send('Hello')
-})
-router.get(('/register'),(req,res) =>{
-    res.send('register')
-})
+export default function Router() {
+  const router = createBrowserRouter([
+    {
+      element: <Layout />,
+      children: [
+        { path: "/", element: <HomePage /> },
+        { path: "/register", element: <RegisterPage /> },
+        { path: "/employeeIfo/:id", element: <EmployeeInfo /> },
+      ],
+    },
+  ]);
 
-module.exports = router
+  return <RouterProvider router={router} />;
+}

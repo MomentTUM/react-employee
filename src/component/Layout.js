@@ -1,10 +1,7 @@
 import React from "react";
-import { Outlet, Link, NavLink, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../component/Header";
-import RegisterPage from "../pages/RegisterPage";
 import Container from "@mui/material/Container";
-import HomePage from "../pages/HomePage";
-import EmployeeInfo from "../pages/EmployeeInfo";
 
 
 export default function Layout() {
@@ -22,9 +19,7 @@ export default function Layout() {
           py: 5,
         }}
       >
-        <HomePage/>
-        {/* <RegisterPage /> */}
-        {/* <EmployeeInfo/> */}
+        <Outlet/>
       </Container>
     </>
   );
