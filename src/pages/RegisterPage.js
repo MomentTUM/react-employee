@@ -1,10 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -15,7 +11,6 @@ export default function RegisterPage() {
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
-            marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -52,7 +47,47 @@ export default function RegisterPage() {
                   autoComplete="family-name"
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="firstNameTH"
+                  required
+                  fullWidth
+                  id="firstNameTH"
+                  label="ชื่อ"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastNameTH"
+                  name="lastNameTH"
+                  label="นามสกุล"
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  autoComplete="given-name"
+                  name="nickName"
+                  required
+                  fullWidth
+                  id="nickName"
+                  label="Nick Name"
+                />
+              </Grid>
+              <Grid item xs={12} sm={8}>
+                <TextField
+                  required
+                  fullWidth
+                  id="telephone"
+                  name="telephone"
+                  label="Telephone"
+                  autoComplete="telephone"
+                />
+              </Grid>
+              <Grid item xs={12} >
                 <TextField
                   required
                   fullWidth
@@ -66,19 +101,10 @@ export default function RegisterPage() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  name="address"
+                  label="Address"
+                  type="address"
+                  id="address"
                 />
               </Grid>
             </Grid>
@@ -90,13 +116,6 @@ export default function RegisterPage() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>

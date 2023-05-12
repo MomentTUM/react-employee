@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Container } from "@mui/material";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -7,10 +8,17 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 
 export default function Header() {
+  const navigate = useNavigate();
   const [value, setValue] = useState("employees");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const handleClickRegister = () => {
+    navigate("employee/register");
+  };
+  const handleClickEmployees = () => {
+    navigate("/");
   };
 
   return (
@@ -24,7 +32,6 @@ export default function Header() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -48,11 +55,13 @@ export default function Header() {
             onChange={handleChange}
           >
             <BottomNavigationAction
+              onClick={handleClickRegister}
               label={<span style={{ color: "silver" }}>Register</span>}
               value="register"
               icon={<PersonAddAlt1Icon style={{ color: "silver" }} />}
             />
             <BottomNavigationAction
+              onClick={handleClickEmployees}
               label={<span style={{ color: "silver" }}>Employees</span>}
               value="employees"
               icon={<GroupsIcon style={{ color: "silver" }} />}

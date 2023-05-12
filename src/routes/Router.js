@@ -3,16 +3,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "../component/Layout";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
-import EmployeeInfo from "../pages/EmployeeInfo";
+import EmployeeInfoPage from "../pages/EmployeeInfoPage";
 
 export default function Router() {
   const router = createBrowserRouter([
     {
       element: <Layout />,
       children: [
-        { path: "/", element: <HomePage /> },
-        { path: "/register", element: <RegisterPage /> },
-        { path: "/employeeIfo/:id", element: <EmployeeInfo /> },
+        { path: "/", element: <HomePage/> },
+        { path: "/employee/register", element: <RegisterPage /> },
+        { path: "/employeeInfo/:id", element: <EmployeeInfoPage /> },
       ],
     },
   ]);
