@@ -4,6 +4,7 @@ import Layout from "../component/Layout";
 import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
 import EmployeeInfoPage from "../pages/EmployeeInfoPage";
+// import TestRegister from "../pages/TestRegister";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -11,8 +12,9 @@ export default function Router() {
       element: <Layout />,
       children: [
         { path: "/", element: <HomePage/> },
+        // { path: "/employee/register", element: <RegisterPage /> },
         { path: "/employee/register", element: <RegisterPage /> },
-        { path: "/employeeInfo/:id", element: <EmployeeInfoPage /> },
+        { path: "/employee/:id", element: <EmployeeInfoPage /> },
       ],
     },
   ]);

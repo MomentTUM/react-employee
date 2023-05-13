@@ -1,11 +1,27 @@
-import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import * as api from "../api";
 
 export default function EmployeeInfo() {
+  const params = useParams()
+  console.log("parammmm",params)
+  const [person, setPerson] = useState(null);
+
+  useEffect(() => {
+    const fetchPerson = async () => {
+      const res = await api.getEmployeeById(params.id);
+      // const res = await api.getAllEmployee();
+      // console.log("++++++",res)
+      console.log("++++++",res)
+      setPerson(res);
+    };
+    fetchPerson();
+  }, []);
   return (
     <Grid
       container
@@ -35,7 +51,7 @@ export default function EmployeeInfo() {
           }}
         >
           <Typography component="h1" variant="h5">
-            FirstName LastName
+            {person?.firstNameEN} {person?.lastNameEN}
           </Typography>
           <Typography component="p" variant="p">
             FirstNameTH LastNameTH

@@ -1,0 +1,43 @@
+import * as React from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import * as api from "../api";
+import { useState, useEffect } from "react";
+
+export default function SelectPosition() {
+  const [positions, setPositions] = useState([]);
+  const [position, setPosition] = useState('');
+
+  useEffect(() => {
+    const fetchPositions = async () => {
+      const res = await api.getAllPosition();
+      setPositions(res);
+    };
+    fetchPositions();
+  }, []);
+  const handleChange = (event) => {
+    setPosition(event.target.value);
+  };
+
+  return (
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Position</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={position}
+          label="position"
+          onChange={handleChange}
+        >
+          {positions.map((el) => {
+            return <MenuItem key={el.positionID} value={el.positionID}>{el.nameEN}</MenuItem>;
+          })}
+        </Select>
+      </FormControl>
+    </Box>
+  );
+}
