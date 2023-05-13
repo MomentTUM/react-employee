@@ -13,41 +13,40 @@ import SelectDepartment from "../component/SelectDepartment";
 import * as api from "../api";
 
 const initialInput = {
-  "empID": "",
-  "firstNameTH": "Hello",
-  "lastNameTH": "Hello",
-  "firstNameEN": "",
-  "lastNameEN": "Hello",
-  "nickName": "Hello",
-  "departmentID": 1,
-  "positionID": 1,
-  "startDate": "2023-05-11T02:18:49.126Z",
-  "birthDate": "2023-05-11T02:18:49.126Z",
-  "email": "hello@gmail.com",
-  "telephone": "0123456789",
-  "statusID": 1,
-  "profilePath": "xxx",
-  "timestamp": "2023-05-11T02:18:49.126Z"
-}
+  empID: "",
+  firstNameTH: "",
+  lastNameTH: "",
+  firstNameEN: "",
+  lastNameEN: "",
+  nickName: "",
+  departmentID: "",
+  positionID: "",
+  startDate: "",
+  birthDate: "",
+  email: "",
+  telephone: "",
+  statusID: "",
+  profilePath: "",
+  timestamp: "",
+};
 export default function RegisterPage() {
   const [input, setInput] = useState(initialInput);
 
-  const handleChangeInput = e => {
+  const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitForm = async (e)=>{
+  const handleSubmitForm = async (e) => {
     try {
       e.preventDefault();
-      console.log(">>>>>>>>>>>>>>><<<<<<<<<",input)
-      const res = await api.createEmployee(input)
-      console.log(">>>>>>>>>>>>>>>",res)
-      setInput(initialInput)
-      
+      console.log(">>>>>>>>>>>>>>><<<<<<<<<", input);
+      // const res = await api.createEmployee(input)
+      setInput(initialInput);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+  console.log("00000000",input.departmentID)
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -61,9 +60,14 @@ export default function RegisterPage() {
           Sign up
         </Typography>
         <h1></h1>
-        <Box component="form" onSubmit={handleSubmitForm} noValidate sx={{ mt: 3 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmitForm}
+          noValidate
+          sx={{ mt: 3 }}
+        >
           <Grid container spacing={1}>
-          <Grid item xs={12} sm={2}>
+            <Grid item xs={12} sm={2}>
               <TextField
                 name="empID"
                 required
@@ -95,7 +99,7 @@ export default function RegisterPage() {
                 fullWidth
                 id="lastNameEN"
                 label="Last Name"
-                value={""}
+                value={input.lastNameEN}
                 type="text"
                 onChange={handleChangeInput}
               />
@@ -107,7 +111,7 @@ export default function RegisterPage() {
                 fullWidth
                 id="firstNameTH"
                 label="ชื่อ"
-                value={""}
+                value={input.firstNameTH}
                 type="text"
                 onChange={handleChangeInput}
               />
@@ -119,7 +123,7 @@ export default function RegisterPage() {
                 fullWidth
                 id="lastNameTH"
                 label="นามสกุล"
-                value={""}
+                value={input.lastNameTH}
                 type="text"
                 onChange={handleChangeInput}
               />
@@ -131,7 +135,7 @@ export default function RegisterPage() {
                 fullWidth
                 id="nickName"
                 label="Nick Name"
-                value={""}
+                value={input.nickName}
                 type="text"
                 onChange={handleChangeInput}
               />
@@ -143,7 +147,7 @@ export default function RegisterPage() {
                 fullWidth
                 id="telephone"
                 label="Telephone"
-                value={""}
+                value={input.telephone}
                 type="number"
                 onChange={handleChangeInput}
               />
@@ -155,7 +159,7 @@ export default function RegisterPage() {
                 fullWidth
                 id="email"
                 label="Email Address"
-                value={""}
+                value={input.email}
                 type="text"
                 onChange={handleChangeInput}
               />
@@ -167,8 +171,8 @@ export default function RegisterPage() {
                 fullWidth
                 id="birthDate"
                 label="birthDate"
-                value={""}
-                type="datetime-local"
+                value={input.birthDate}
+                type="date"
                 InputLabelProps={{ shrink: true }}
                 onChange={handleChangeInput}
               />
@@ -180,20 +184,32 @@ export default function RegisterPage() {
                 fullWidth
                 id="startDate"
                 label="startDate"
-                value={""}
-                type="datetime-local"
+                value={input.startDate}
+                type="date"
                 InputLabelProps={{ shrink: true }}
                 onChange={handleChangeInput}
               />
             </Grid>
             <Grid item xs={4}>
-              <SelectDepartment value={""} onChange={handleChangeInput}/>
+              <SelectDepartment
+                input={input}
+                setInput={setInput}
+                name="departmentId"
+                value={input.departmentID}
+                onChange={handleChangeInput}
+              />
             </Grid>
             <Grid item xs={4}>
-              <SelectPosition value={""} onChange={handleChangeInput}/>
+              <SelectPosition
+                value={input.positionID}
+                onChange={handleChangeInput}
+              />
             </Grid>
             <Grid item xs={4}>
-              <SelectStatus value={""} onChange={handleChangeInput}/>
+              <SelectStatus
+                value={input.statusID}
+                onChange={handleChangeInput}
+              />
             </Grid>
             <Grid item xs={6}>
               <TextField
@@ -202,7 +218,7 @@ export default function RegisterPage() {
                 fullWidth
                 id="profilePath"
                 label="profilePath"
-                value={""}
+                value={input.profilePath}
                 type="text"
                 onChange={handleChangeInput}
               />
@@ -214,8 +230,8 @@ export default function RegisterPage() {
                 fullWidth
                 id="timestamp"
                 label="timestamp"
-                value={""}
-                type="datetime-local"
+                value={input.timestamp}
+                type="date"
                 InputLabelProps={{ shrink: true }}
                 onChange={handleChangeInput}
               />

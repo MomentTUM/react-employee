@@ -65,7 +65,6 @@ export const getAllStatus = async () => {
     const response = await axios.get(urlGetLookupStatus, {
       headers: headerKey,
     });
-    console.log(response.data.result)
     return response.data.result;
   } catch (error) {
     console.log(error.response);
@@ -77,7 +76,6 @@ export const getAllDepartment = async () => {
     const response = await axios.get(urlGetLookupDepartment, {
       headers: headerKey,
     });
-    console.log(response.data.result)
     return response.data.result;
   } catch (error) {
     console.log(error.response);

@@ -14,9 +14,6 @@ export default function EmployeeInfo() {
   useEffect(() => {
     const fetchPerson = async () => {
       const res = await api.getEmployeeById(params.id);
-      // const res = await api.getAllEmployee();
-      // console.log("++++++",res)
-      console.log("++++++",res)
       setPerson(res);
     };
     fetchPerson();
@@ -58,7 +55,7 @@ export default function EmployeeInfo() {
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <p>ID: {person?.empID}</p>
-              <p>{person?.nickName}</p>
+              <p>nickName: {person?.nickName}</p>
             </Box>
             <Box>
               <p>Email: {person?.email}</p>

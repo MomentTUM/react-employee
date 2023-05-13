@@ -7,7 +7,7 @@ import Select from "@mui/material/Select";
 import * as api from "../api";
 import { useState, useEffect } from "react";
 
-export default function SelectDepartment() {
+export default function SelectDepartment({input,setInput}) {
   const [departments, setDepartments] = useState([]);
   const [department, setDepartment] = useState('');
 
@@ -18,9 +18,10 @@ export default function SelectDepartment() {
     };
     fetchDepartments();
   }, []);
-
-  const handleChange = (event) => {
-    setDepartment(event.target.value);
+  
+  const handleChangeInput = (e) => {
+    setDepartment(e.target.value)
+    setInput({ ...input, department: e.target.value });
   };
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -29,9 +30,9 @@ export default function SelectDepartment() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={department}
+          value={input.departmentID || department}
           label="status"
-          onChange={handleChange}
+          onChange={handleChangeInput}
         >
           {departments.map((el) => {
             return (
