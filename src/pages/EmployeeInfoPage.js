@@ -9,7 +9,6 @@ import * as api from "../api";
 
 export default function EmployeeInfo() {
   const params = useParams()
-  console.log("parammmm",params)
   const [person, setPerson] = useState(null);
 
   useEffect(() => {
@@ -54,18 +53,18 @@ export default function EmployeeInfo() {
             {person?.firstNameEN} {person?.lastNameEN}
           </Typography>
           <Typography component="p" variant="p">
-            FirstNameTH LastNameTH
+            {person?.firstNameTH} {person?.lastNameTH}
           </Typography>
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <p>ID: 10001</p>
-              <p>nickName</p>
+              <p>ID: {person?.empID}</p>
+              <p>{person?.nickName}</p>
             </Box>
             <Box>
-              <p>Email: test@gmail.com</p>
-              <p>Telephone : 0123456789</p>
-              <p>birthDate : 01/01/2023</p>
-              <p>department : Web developer</p>
+              <p>Email: {person?.email}</p>
+              <p>Telephone : {person?.telephone}</p>
+              <p>birthDate : {person?.birthDate}</p>
+              <p>department : {person?.department?.fullNameEN}</p>
             </Box>
           </Box>
         </Box>
