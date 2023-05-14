@@ -1,15 +1,15 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import * as api from "../api";
 import { useState, useEffect } from "react";
 
-export default function SelectStatus() {
+export default function SelectStatus({ input, setInput }) {
   const [statuses, setStatuses] = useState([]);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     const fetchStatuses = async () => {
@@ -19,9 +19,9 @@ export default function SelectStatus() {
     fetchStatuses();
   }, []);
 
-
-  const handleChange = (event) => {
-    setStatus(event.target.value);
+  const handleChangeInput = (e) => {
+    setStatus(e.target.value);
+    setInput({ ...input, statusID: e.target.value });
   };
 
   return (
@@ -31,12 +31,16 @@ export default function SelectStatus() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={status}
+          value={input.statusID}
           label="status"
-          onChange={handleChange}
+          onChange={handleChangeInput}
         >
           {statuses.map((el) => {
-            return <MenuItem key={el.statusID} value={el.statusID}>{el.description}</MenuItem>;
+            return (
+              <MenuItem key={el.statusID} value={el.statusID}>
+                {el.description}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>

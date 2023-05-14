@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -9,7 +9,6 @@ import Container from "@mui/material/Container";
 import SelectStatus from "../component/SelectStatus";
 import SelectPosition from "../component/SelectPosition";
 import SelectDepartment from "../component/SelectDepartment";
-
 import * as api from "../api";
 
 const initialInput = {
@@ -39,14 +38,14 @@ export default function RegisterPage() {
   const handleSubmitForm = async (e) => {
     try {
       e.preventDefault();
-      console.log(">>>>>>>>>>>>>>><<<<<<<<<", input);
-      // const res = await api.createEmployee(input)
+      console.log(">>>>>>>>>>>>>>><<<<<<<<<<<<<<<", input);
+      const res = await api.createEmployee(input)
       setInput(initialInput);
+      alert("Register Success");
     } catch (error) {
-      console.log(error);
+      console.log(error.data.message);
     }
   };
-  console.log("00000000",input.departmentID)
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -195,19 +194,20 @@ export default function RegisterPage() {
                 input={input}
                 setInput={setInput}
                 name="departmentId"
-                value={input.departmentID}
                 onChange={handleChangeInput}
               />
             </Grid>
             <Grid item xs={4}>
               <SelectPosition
-                value={input.positionID}
+                input={input}
+                setInput={setInput}
                 onChange={handleChangeInput}
               />
             </Grid>
             <Grid item xs={4}>
               <SelectStatus
-                value={input.statusID}
+                input={input}
+                setInput={setInput}
                 onChange={handleChangeInput}
               />
             </Grid>

@@ -10,7 +10,6 @@ import { useState, useEffect } from "react";
 export default function SelectDepartment({input,setInput}) {
   const [departments, setDepartments] = useState([]);
   const [department, setDepartment] = useState('');
-
   useEffect(() => {
     const fetchDepartments = async () => {
       const res = await api.getAllDepartment();
@@ -21,8 +20,9 @@ export default function SelectDepartment({input,setInput}) {
   
   const handleChangeInput = (e) => {
     setDepartment(e.target.value)
-    setInput({ ...input, department: e.target.value });
+    setInput({ ...input, departmentID: e.target.value });
   };
+
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -30,8 +30,8 @@ export default function SelectDepartment({input,setInput}) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={input.departmentID || department}
-          label="status"
+          value={input.departmentID}
+          label="department"
           onChange={handleChangeInput}
         >
           {departments.map((el) => {

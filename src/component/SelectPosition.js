@@ -7,7 +7,7 @@ import Select from "@mui/material/Select";
 import * as api from "../api";
 import { useState, useEffect } from "react";
 
-export default function SelectPosition() {
+export default function SelectPosition({input,setInput}) {
   const [positions, setPositions] = useState([]);
   const [position, setPosition] = useState('');
 
@@ -18,8 +18,9 @@ export default function SelectPosition() {
     };
     fetchPositions();
   }, []);
-  const handleChange = (event) => {
-    setPosition(event.target.value);
+  const handleChangeInput = (e) => {
+    setPosition(e.target.value);
+    setInput({ ...input, positionID: e.target.value });
   };
 
   return (
@@ -29,9 +30,9 @@ export default function SelectPosition() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={position}
+          value={input.positionID}
           label="position"
-          onChange={handleChange}
+          onChange={handleChangeInput}
         >
           {positions.map((el) => {
             return <MenuItem key={el.positionID} value={el.positionID}>{el.nameEN}</MenuItem>;
