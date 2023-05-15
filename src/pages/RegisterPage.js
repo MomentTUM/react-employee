@@ -39,7 +39,7 @@ export default function RegisterPage() {
     try {
       e.preventDefault();
       console.log(">>>>>>>>>>>>>>><<<<<<<<<<<<<<<", input);
-      const res = await api.createEmployee(input)
+      await api.createEmployee(input)
       setInput(initialInput);
       alert("Register Success");
     } catch (error) {
@@ -58,7 +58,6 @@ export default function RegisterPage() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <h1></h1>
         <Box
           component="form"
           onSubmit={handleSubmitForm}

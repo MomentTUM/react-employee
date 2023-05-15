@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 export default function SelectPosition({input,setInput}) {
   const [positions, setPositions] = useState([]);
-  const [position, setPosition] = useState('');
+  // const [position, setPosition] = useState('');
 
   useEffect(() => {
     const fetchPositions = async () => {
@@ -19,7 +19,7 @@ export default function SelectPosition({input,setInput}) {
     fetchPositions();
   }, []);
   const handleChangeInput = (e) => {
-    setPosition(e.target.value);
+    // setPosition(e.target.value);
     setInput({ ...input, positionID: e.target.value });
   };
 

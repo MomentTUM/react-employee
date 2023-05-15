@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 export default function SelectDepartment({input,setInput}) {
   const [departments, setDepartments] = useState([]);
-  const [department, setDepartment] = useState('');
+  // const [department, setDepartment] = useState('');
   useEffect(() => {
     const fetchDepartments = async () => {
       const res = await api.getAllDepartment();
@@ -19,7 +19,7 @@ export default function SelectDepartment({input,setInput}) {
   }, []);
   
   const handleChangeInput = (e) => {
-    setDepartment(e.target.value)
+    // setDepartment(e.target.value)
     setInput({ ...input, departmentID: e.target.value });
   };
 

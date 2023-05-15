@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 export default function SelectStatus({ input, setInput }) {
   const [statuses, setStatuses] = useState([]);
-  const [status, setStatus] = useState("");
+  // const [status, setStatus] = useState("");
 
   useEffect(() => {
     const fetchStatuses = async () => {
@@ -20,7 +20,7 @@ export default function SelectStatus({ input, setInput }) {
   }, []);
 
   const handleChangeInput = (e) => {
-    setStatus(e.target.value);
+    // setStatus(e.target.value);
     setInput({ ...input, statusID: e.target.value });
   };
 

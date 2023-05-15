@@ -17,7 +17,7 @@ export default function EmployeeInfo() {
       setPerson(res);
     };
     fetchPerson();
-  }, []);
+  });
   return (
     <Grid
       container
